@@ -4,7 +4,6 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
-// Require History Schema
 var Saved = require("./models/Saved");
 
 // Create Instance of Express
@@ -23,8 +22,8 @@ app.use(express.static("./public"));
 
 // -------------------------------------------------
 
-// MongoDB Configuration configuration (Change this URL to your own DB)
-mongoose.connect("mongodb://localhost/newyorktimesreact");
+// Mongoose config with mlab
+mongoose.connect("mongodb://nytreact:nytreact@ds141108.mlab.com:41108/heroku_zn93zcv6");
 var db = mongoose.connection;
 
 db.on("error", function(err) {
