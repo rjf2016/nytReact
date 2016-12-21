@@ -4,7 +4,7 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
-var Saved = require("./models/Saved");
+var saved = require("./models/saved");
 
 // Create Instance of Express
 var app = express();
@@ -47,7 +47,7 @@ app.get("/", function(req, res) {
 app.get("/api", function(req, res) {
 
   // We will find all the records, sort it in descending order, then limit the records to 5
-  Saved.find({}).sort([
+  saved.find({}).sort([
     ["date", "descending"]
   ]).limit(5).exec(function(err, doc) {
     if (err) {
@@ -66,7 +66,7 @@ app.post("/api", function(req, res) {
 
   // Here we'll save the location based on the JSON input.
   // We'll use Date.now() to always get the current date time
-  Saved.create({
+  saved.create({
     headline: req.body.headline,
     date: Date.now(),
     url: req.body.url
