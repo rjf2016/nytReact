@@ -86,7 +86,7 @@ app.delete("/api/:id", function(req, res) {
  
     console.log(req.params.id);
 
-    Saved.findByIdAndRemove(req.params.id, function(err, user) {
+    saved.findByIdAndRemove(req.params.id, function(err, user) {
        if (err) {
           console.log(err);
         }
